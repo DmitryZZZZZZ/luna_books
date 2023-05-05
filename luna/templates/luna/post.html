@@ -1,0 +1,10 @@
+{% extends 'luna/base.html' %}
+
+{% block content %}
+    <h1>{{post.title}}</h1>
+    {% if post.photo %}
+    <p><img class="img-article-left thumb" src="{{ post.photo.url }}"></p>
+{% endif %}
+	{{post.content|linebreaks}}
+    <a href="{{post.url}}">Скачать книгу на Яндекс диск</a>
+{% endblock %}
