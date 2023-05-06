@@ -1,4 +1,4 @@
-{% extends 'luna/base.html' %}
+{% extends 'luna/default.html' %}
 
 {% block content %}
     <h1>{{post.title}}</h1>
@@ -6,5 +6,9 @@
     <p><img class="img-article-left thumb" src="{{ post.photo.url }}"></p>
 {% endif %}
 	{{post.content|linebreaks}}
+    {% if request.user.is_authenticated %}
     <a href="{{post.url}}">Скачать книгу на Яндекс диск</a>
+    {% else %}
+        <div class="content-text"><i>Ссылка на скачивание доступна только зарегистрированным пользователям</i></div>
+    {% endif %}
 {% endblock %}

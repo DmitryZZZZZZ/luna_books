@@ -24,6 +24,7 @@ from luna.views import *
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include('luna.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 handler404 = pageNotFound

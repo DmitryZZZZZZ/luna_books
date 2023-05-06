@@ -4,6 +4,8 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 from django.core.paginator import Paginator
+from allauth.account.views import LoginView, SignupView, LogoutView
+
 
 from .forms import *
 from .models import *
@@ -12,7 +14,6 @@ from .utils import *
 menu = [{'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Добавить статью', 'url_name': 'add_page'},
         {'title': 'Обратная связь', 'url_name': 'contact'},
-        {'title': 'Войти', 'url_name': 'login'}
         ]
 
 
@@ -84,7 +85,6 @@ class LunaCategory(DataMixin, ListView):
     context_object_name = 'posts'
     allow_empty = False
 
-
     def get_queryset(self):
         return Post.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
 
@@ -107,8 +107,12 @@ class LunaCategory(DataMixin, ListView):
 #     return render(request, 'luna/index.html', context=context)
 
 
-def login(request):
-    return HttpResponse('Авторизация')
+# class LoginUser(LoginView):
+#     template_name = 'luna/index.html'
+
+
+# def login(request):
+#     return HttpResponse('Авторизация')
 
 
 def contact(request):

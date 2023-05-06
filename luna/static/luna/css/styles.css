@@ -100,7 +100,7 @@ ul.mainmenu li {
 	margin: 18px 40px 0 30px;
 }
 ul.mainmenu li.logo {margin: 0;}
-ul.mainmenu li.last {float: right;}
+ul.mainmenu li.last {float: right; color: #b8e50d}
 
 ul.mainmenu li a {
 	color: #ffffff;
@@ -241,7 +241,7 @@ ul.control {
 }
 ul.control li {	float: left; padding: 0 0 0 10px;}
 ul.control li.first:before {content: "\2190"; padding: 0 10px 0 0;}
-ul.control li.last {float: right; padding: 0 40px 0 0;}
+ul.control li.last {float: right; padding: 0 40px  0;}
 ul.control li.last:after {content: "\2192"; padding: 0 0 0 10px;}
 ul.control li a { color: #0059b2; text-decoration: none; }
 ul.control li a:hover { color: #CC0000; }
@@ -427,4 +427,7 @@ ul.lang-list li a:hover {color: #fdc073;}
 }
 .list-pages .page-num-selected:hover {
 	box-shadow: none;
+}
+.content-text i {
+	color: #b8e50d
 }
