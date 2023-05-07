@@ -1,0 +1,9 @@
+{% extends 'luna/default.html' %}
+
+{% block content %}
+<h1>Письмо успешно отправлено!</h1>
+    <p>Спасибо, ваше мнение очень важно для нас!</p>
+    <form action="{% url 'home' %}"><button>На главную страницу</button>
+    </form>
+
+{% endblock %}

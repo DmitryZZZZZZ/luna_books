@@ -1,12 +1,14 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, FormView
 from django.core.paginator import Paginator
-from allauth.account.views import LoginView, SignupView, LogoutView
+from allauth.account.views import LoginView, SignupView, LogoutView, email
+from django.core.mail import EmailMessage
 
-
+from PyDev.settings import DEFAULT_FROM_EMAIL
 from .forms import *
 from .models import *
 from .utils import *
@@ -28,7 +30,7 @@ class LunaHome(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))  # объединяю словари
 
     def get_queryset(self):
-        return Post.objects.filter(is_published=True)
+        return Post.objects.filter(is_published=True).select_related('cat')
 
 
 def about(request):
@@ -86,12 +88,12 @@ class LunaCategory(DataMixin, ListView):
     allow_empty = False
 
     def get_queryset(self):
-        return Post.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
+        return Post.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True).select_related('cat')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        c_def = self.get_user_contex(title='Категория - ' + str(context['posts'][0].cat),
-                                     cat_selected=context['posts'][0].cat_id)
+        c = Category.objects.get(slug=self.kwargs['cat_slug'])
+        c_def = self.get_user_contex(title='Категория - ' + str(c.name), cat_selected=c.pk)
         return dict(list(context.items()) + list(c_def.items()))
 
 
@@ -115,8 +117,31 @@ class LunaCategory(DataMixin, ListView):
 #     return HttpResponse('Авторизация')
 
 
-def contact(request):
-    return HttpResponse('Контакты')
+class ContactFormView(DataMixin, CreateView):
+    form_class = ContactForm
+    template_name = 'luna/contact.html'
+    success_url = reverse_lazy('success')
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_contex(title='Обратная связь')
+        return dict(list(context.items()) + list(c_def.items()))
+
+    def form_valid(self, form):
+        data = form.cleaned_data
+        subject = f'Заполнена форма обратной связи luna-books от {data["first_name"]} {data["last_name"]}' \
+                  f' Почта отправителя: {data["email"]}'
+        message = data.get('message')
+        send_mail(subject, message, '', [DEFAULT_FROM_EMAIL], fail_silently=False)
+        return super().form_valid(form)
+
+
+def success(request):
+    return render(request, 'luna/success_send_mail.html')
+
+
+# def contact(request):
+#     return HttpResponse('Контакты')
 
 
 def categories(request, catid):

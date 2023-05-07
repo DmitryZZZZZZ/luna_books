@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 html, body {
-	font-family: 'Arial';
+	font-family: 'Oswald';
 	margin: 0;
 	padding: 0;
 	height: 100%;
@@ -97,7 +98,7 @@ ul.mainmenu {
 }
 ul.mainmenu li {
 	float: left;
-	margin: 18px 40px 0 30px;
+	margin: 18px 10px 0 30px;
 }
 ul.mainmenu li.logo {margin: 0;}
 ul.mainmenu li.last {float: right; color: #b8e50d}
@@ -191,7 +192,7 @@ div.button {
 	display: inline-block;
 	width: 40px;
 	height: 40px;
-	margin: 0 20px 0 20px;
+	margin: 0 20px 0 0px;
 }
 .left-chapters ul li.share a.share-yt {
 	width: 100%;
@@ -215,7 +216,7 @@ ul.breadcrumbs {
 	padding: 0;
 	list-style: none;
 	font-size: 20px;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 }
 ul.breadcrumbs li {
 	display: inline-block;
@@ -235,7 +236,7 @@ ul.control {
 	margin: 0;
 	padding: 60px 0 0 0;
 	list-style: none;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 	font-size: 18px;
 	width: 100%;
 }
@@ -250,7 +251,7 @@ ul.content-table {
 	margin: 0;
 	padding: 60px 0 0 30px;
 	list-style: none;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 	font-size: 28px;
 }
 ul.content-table li {
@@ -266,7 +267,7 @@ ul.content-table li a:hover {color: #F0711C;}
 	margin: 60px 0 0 30px;
 	color: #ffffff;
 	font-size: 17px;
-	font-family: Yandex Sans Display Light;
+	font-family: 'Oriya MN';
 }
 .content-text h1 {font-size: 32px;}
 
@@ -280,7 +281,7 @@ ul.lang-list {
 	border-top: 1px solid #959A82;
 	box-sizing: border-box;
 	font-size: 18px;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 }
 ul.lang-list li {
 	display: inline-block;
@@ -305,12 +306,12 @@ ul.lang-list li a:hover {color: #fdc073;}
 	padding: 0 10px 0 10px;
 	margin-left: 30px;
 	background: #fff;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 }
 
 .list-topic {
 	margin: 40px 0 60px 0;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 }
 .list-topic p {
 	margin: 0;
@@ -350,7 +351,7 @@ ul.lang-list li a:hover {color: #fdc073;}
 .quote {
 	background: url('../images/blockquote.png') no-repeat 0 10px;
 	padding: 5px 5px 5px 70px;
-	font-family: Sans-serif, Arial, Tahoma;
+	font-family: 'Oriya MN';
 	font-style: italic;
 }
 
@@ -361,7 +362,7 @@ ul.lang-list li a:hover {color: #fdc073;}
 	padding: 5px;
 	color: #aaa;
 	font-size: 14px;
-	font-family: Verdana, Geneva, Arial, Helvetica;
+	font-family: 'Oriya MN';
 	text-align: -webkit-left;
 	overflow: hidden;
 }

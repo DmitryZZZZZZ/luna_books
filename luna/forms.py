@@ -1,5 +1,8 @@
 from django import forms
 from django.core.exceptions import ValidationError
+from django.forms import ModelForm, Textarea
+from captcha.fields import CaptchaField
+
 from .models import *
 
 
@@ -22,3 +25,16 @@ class AddPostForm(forms.ModelForm):
             raise ValidationError('Длина превышает 200 символов')
 
         return title
+
+
+class ContactForm(forms.ModelForm):
+    captcha = CaptchaField()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Contact
+        fields = ['first_name', 'last_name', 'email', 'message']
+        widgets = {'message': Textarea(attrs={'placeholder': 'Напишите тут ваше сообщение'})}
+

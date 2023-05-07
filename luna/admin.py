@@ -20,3 +20,8 @@ class CategoryAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Category, CategoryAdmin)
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    pass
