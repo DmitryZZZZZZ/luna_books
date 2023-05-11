@@ -2,7 +2,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-
+.idea
 # Icon must end with two \r
 Icon
 
@@ -32,6 +32,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+media/
 env/
 venv/
 build/
