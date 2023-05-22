@@ -48,16 +48,6 @@ class AddPage(LoginRequiredMixin, DataMixin, CreateView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
-# def addpage(request):
-#     if request.method == 'POST':
-#         form = AddPostForm(request.POST)
-#         if form.is_valid():
-#             print(form.cleaned_data)
-#     else:
-#         form = AddPostForm()
-#     return render(request, 'luna/addpage.html', {'form': form, 'menu': menu, 'title': 'Добавление книги'})
-
-
 class ShowPost(DataMixin, DetailView):
     model = Post
     template_name = 'luna/post.html'
@@ -68,17 +58,6 @@ class ShowPost(DataMixin, DetailView):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_contex(title=context['post'])
         return dict(list(context.items()) + list(c_def.items()))
-
-
-# def show_post(request, post_slug):
-#     post = get_object_or_404(Post, slug=post_slug)
-#
-#     context = {'post': post,
-#                'menu': menu,
-#                'title': post.title,
-#                'cat_selected': post.cat_id,
-#                }
-#     return render(request, 'luna/post.html', context=context)
 
 
 class LunaCategory(DataMixin, ListView):
@@ -95,26 +74,6 @@ class LunaCategory(DataMixin, ListView):
         c = Category.objects.get(slug=self.kwargs['cat_slug'])
         c_def = self.get_user_contex(title='Категория - ' + str(c.name), cat_selected=c.pk)
         return dict(list(context.items()) + list(c_def.items()))
-
-
-# def show_category(request, cat_slug):
-#     posts = Post.objects.filter(cat_slug=cat_slug)
-#     if len(posts) == 0:
-#         raise Http404()
-#     context = {'posts': posts,
-#                'menu': menu,
-#                'title': 'Категории',
-#                'cat_selected': cat_slug,
-#                }
-#     return render(request, 'luna/index.html', context=context)
-
-
-# class LoginUser(LoginView):
-#     template_name = 'luna/index.html'
-
-
-# def login(request):
-#     return HttpResponse('Авторизация')
 
 
 class ContactFormView(DataMixin, CreateView):
@@ -138,10 +97,6 @@ class ContactFormView(DataMixin, CreateView):
 
 def success(request):
     return render(request, 'luna/success_send_mail.html')
-
-
-# def contact(request):
-#     return HttpResponse('Контакты')
 
 
 def categories(request, catid):
