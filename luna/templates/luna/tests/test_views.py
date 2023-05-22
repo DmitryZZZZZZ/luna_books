@@ -1,5 +1,4 @@
 from django.test import TestCase
-from luna.views import *
 
 
 class LunaHomeViewTestCase(TestCase):
