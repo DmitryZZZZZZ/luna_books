@@ -6,6 +6,7 @@ class LunaHomeViewTestCase(TestCase):
         resp = self.client.get('')
         self.assertEqual(resp.status_code, 200)
 
+
     def test_context_in_data_mixin(self):
         resp = self.client.get('')
         self.assertTrue('menu' in resp.context)

@@ -8,7 +8,6 @@ class PostModelTestCase(TestCase):
         post = Post(title="New", content="Content", slug='New')
         self.assertEqual(post.get_absolute_url(), f"/post/{post.slug}/")
 
-
 class CategoryModelTestCase(TestCase):
     def test_get_absolute_url(self):
         category = Category(name="Книги на русском языке",
@@ -33,6 +32,7 @@ class ContactModelTestCase(TestCase):
         contact = Contact.objects.get(id=1)
         field_label = contact._meta.get_field('message').max_length
         self.assertEqual(field_label, 1000)
+
 
     def test_object_name_is_first_name(self):
         Contact.objects.create(first_name='Fedor', last_name='Melnikov', email='melnik444@mail.ru',
