@@ -1,4 +1,5 @@
 from django.test import TestCase
+
 from luna.models import Post, Category, Contact
 
 
